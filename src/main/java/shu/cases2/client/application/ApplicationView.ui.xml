@@ -1,0 +1,86 @@
+<!--
+  #%L
+  GwtMaterial
+  %%
+  Copyright (C) 2015 - 2018 GwtMaterialDesign
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        xmlns:g='urn:import:com.google.gwt.user.client.ui'
+        xmlns:m="urn:import:gwt.material.design.client.ui"
+        xmlns:m.html="urn:import:gwt.material.design.client.ui.html">
+        
+    <ui:with field="res" type="shu.cases2.client.resources.AppResources"/>
+    <ui:with field="tokens" type="shu.cases2.client.place.NameTokens"/>
+    
+    <ui:style>
+      .panel {
+          padding-left: 5%;
+          width: 100%;
+          padding: 10px 50px 150px 50px;
+          background: #FFF;
+          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+      }
+       .footer {
+          margin-top: -50px !important;
+      }
+            .gplus{
+        display: block;
+        margin-top: 20px;
+      }
+  </ui:style>
+<!-- 
+      
+ -->  
+    <m:MaterialPanel>
+        <m:MaterialHeader width="100%">
+            <m:MaterialNavBar activates="sidenav" width="100%">
+                <m:MaterialNavBrand paddingLeft="60" text="App" />
+                <m:MaterialNavSection float="RIGHT">
+                    <m:MaterialLink text="Link 1"/>
+                    <m:MaterialLink iconType="POLYMER" />
+                </m:MaterialNavSection>
+            </m:MaterialNavBar>
+        </m:MaterialHeader>
+
+        <m:MaterialSideNavPush m:id="sidenav" width="180">
+            <m:MaterialLink text="Link 1" iconType="POLYMER"/>
+            <m:MaterialLink text="Link 2" iconType="POLYMER"/>
+            <m:MaterialLink text="Link 3" iconType="POLYMER"/>
+            <m.html:ListItem waves="DEFAULT">
+				<m:MaterialLink targetHistoryToken="{tokens.getComponent}" iconPosition="LEFT" iconType="POLYMER" text="Component"/>
+			</m.html:ListItem>
+            <m.html:ListItem waves="DEFAULT">
+				<m:MaterialLink targetHistoryToken="{tokens.getAbout}" iconPosition="LEFT" iconType="INFO_OUTLINE" text="About"/>
+			</m.html:ListItem>
+            
+        </m:MaterialSideNavPush>
+<!--
+ -->
+        <m:MaterialContainer>
+
+<g:HTMLPanel ui:field="main" addStyleNames="{style.panel} panel" />
+<!--              <m:MaterialPanel textAlign="CENTER">
+                <m:MaterialIcon marginTop="120" textColor="BLUE_DARKEN_1" iconType="POLYMER" iconSize="LARGE"/>
+                <m:MaterialLabel text="GMD 2.0" textColor="BLUE" fontSize="2em"/>
+                <m:MaterialLabel text="Start building now your gwt-material apps." textColor="BLUE" fontSize="0.8em"/>
+            </m:MaterialPanel>
+ -->            
+        </m:MaterialContainer>
+
+    </m:MaterialPanel>
+</ui:UiBinder>
