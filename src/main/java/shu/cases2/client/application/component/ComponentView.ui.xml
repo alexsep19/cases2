@@ -25,10 +25,17 @@
 
     <g:HTMLPanel>
     <m:MaterialRow addStyleNames="code">
-        <m:MaterialColumn grid="l4" title="TextBox" shadow="1">
+        <m:MaterialColumn width="250px" title="TextBox" shadow="1">
         <m:MaterialRow>
-			<m:MaterialTextBox label="Фамилия" grid="s5"/>
-			<m:MaterialTextBox label="Имя" placeholder="This is a placeholder" grid="s5"/>
+        	<m:MaterialTitle  title="TextBox"/>
+        		<m:MaterialRow>
+					<m:MaterialTextBox label="Фамилия" length="20" maxLength="20"/>
+					<m:MaterialTextBox ui:field="txName" label="Имя" placeholder="This is a placeholder"/>
+					<m:MaterialCheckBox ui:field="cbCheckBox" text="вкл чекБокс" type="FILLED"/>
+					<m:MaterialCheckBox ui:field="cbTextBox" text="вкл имя" type="FILLED"/>
+				</m:MaterialRow>
+ 				   	<m:MaterialButton ui:field="btnLoad" padding="2" fontSize="12px" margin="4" width="100px" text="Загрузить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
+				   	<m:MaterialButton ui:field="btnClose" padding="2" fontSize="12px" margin="4" width="100px" text="Восстановить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
 			</m:MaterialRow>
 		</m:MaterialColumn>
 	</m:MaterialRow>

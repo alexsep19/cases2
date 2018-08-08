@@ -28,13 +28,15 @@
     <ui:style>
       .panel {
           padding-left: 5%;
+          padding: 110px 50px 150px 50px;
           width: 100%;
-          padding: 10px 50px 150px 50px;
           background: #FFF;
           box-sizing: border-box;
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
       }
+  </ui:style>
+<!-- 
        .footer {
           margin-top: -50px !important;
       }
@@ -42,8 +44,6 @@
         display: block;
         margin-top: 20px;
       }
-  </ui:style>
-<!-- 
       
  -->  
     <m:MaterialPanel>
