@@ -38,8 +38,8 @@ public class ClientModule extends AbstractPresenterModule {
         bind(ResourceLoader.class).asEagerSingleton();
 
         // DefaultPlaceManager Places
-        bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.HOME);
-        bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.HOME);
-        bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.HOME);
+        bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.component);
+        bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.component);
+        bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.component);
     }
 }

@@ -20,7 +20,7 @@
 package shu.cases2.client.place;
 
 public class NameTokens {
-    public static final String HOME = "/";
+//    public static final String HOME = "/";
     public static final String about = "about";
     public static final String component = "component";
     

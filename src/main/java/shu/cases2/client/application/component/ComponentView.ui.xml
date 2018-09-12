@@ -29,17 +29,17 @@
         <m:MaterialRow>
         	<m:MaterialTitle  title="TextBox"/>
         		<m:MaterialRow>
-					<m:MaterialTextBox label="Фамилия" length="20" maxLength="20"/>
+					<m:MaterialTextBox label="Фамилия" maxLength="20"/>
 					<m:MaterialTextBox ui:field="txName" label="Имя" placeholder="This is a placeholder"/>
-					<m:MaterialCheckBox ui:field="cbCheckBox" text="вкл чекБокс" type="FILLED"/>
+ 					<m:MaterialCheckBox ui:field="cbCheckBox" text="вкл чекБокс" type="FILLED"/>
 					<m:MaterialCheckBox ui:field="cbTextBox" text="вкл имя" type="FILLED"/>
 				</m:MaterialRow>
  				   	<m:MaterialButton ui:field="btnLoad" padding="2" fontSize="12px" margin="4" width="100px" text="Загрузить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
-				   	<m:MaterialButton ui:field="btnClose" padding="2" fontSize="12px" margin="4" width="100px" text="Восстановить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
+				   	<m:MaterialButton ui:field="btnReset" padding="2" fontSize="12px" margin="4" width="100px" text="Восстановить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
 			</m:MaterialRow>
 		</m:MaterialColumn>
 	</m:MaterialRow>
-    
+ <!--    
     <m:MaterialRow addStyleNames="code">
       <m:MaterialTitle  title="Floating" description="The floating circular action button is meant for very important functions."/>
       <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" size="LARGE" backgroundColor="RED" iconType="CAKE" />
@@ -48,7 +48,7 @@
       <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" size="LARGE" iconType="GROUP" />
       <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" size="LARGE" backgroundColor="RED" iconType="CAKE" />
       <m:MaterialButton margin="8" type="FLOATING" waves="DEFAULT" size="LARGE" backgroundColor="WHITE" iconColor="GREEN" iconType="ANDROID" />
-  
     </m:MaterialRow>
+     -->
     </g:HTMLPanel>
 </ui:UiBinder>

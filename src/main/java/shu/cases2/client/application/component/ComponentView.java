@@ -1,5 +1,10 @@
 package shu.cases2.client.application.component;
 
+import org.fusesource.restygwt.client.Defaults;
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
+
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 
 /*
@@ -34,13 +39,18 @@ import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialToast;
+import shu.cases2.client.rest.RestClient;
+import shu.cases2.client.rest.ValueClient;
+import shu.cases2.shared.domain.NameValue;
 
 public class ComponentView extends ViewImpl implements ComponentPresenter.MyView {
-    public interface Binder extends UiBinder<Widget, ComponentView> {
+
+	public interface Binder extends UiBinder<Widget, ComponentView> {
     }
-    @UiField MaterialButton btnLoad, btnClose;
+    @UiField MaterialButton btnLoad, btnReset;
     @UiField MaterialCheckBox cbCheckBox, cbTextBox;
     @UiField MaterialTextBox txName;
+    
     
     @Inject
     ComponentView(Binder uiBinder) {
@@ -49,6 +59,23 @@ public class ComponentView extends ViewImpl implements ComponentPresenter.MyView
         cbTextBox.setValue(false);
         enableTextBox(cbTextBox.getValue());
         enableCheckBox(cbCheckBox.getValue());
+    }
+    
+    @UiHandler("btnLoad")
+    void handlerBtnLoad(ClickEvent e) {
+        Defaults.setServiceRoot(GWT.getHostPageBaseURL());
+        ValueClient client = GWT.create(ValueClient.class);
+    	client.getValues("1", new MethodCallback<NameValue>(){
+
+			@Override
+			public void onFailure(Method method, Throwable exception) {
+				
+			}
+			@Override
+			public void onSuccess(Method method, NameValue response) {
+				txName.setValue(response.getValue());
+			}
+    	} );
     }
     
     @UiHandler("cbTextBox")
