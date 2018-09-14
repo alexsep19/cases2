@@ -37,20 +37,24 @@ import com.gwtplatform.mvp.client.ViewImpl;
 
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCheckBox;
+import gwt.material.design.client.ui.MaterialDatePicker;
+import gwt.material.design.client.ui.MaterialModal;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialToast;
-import shu.cases2.client.rest.RestClient;
+import shu.cases2.client.rest.TextBoxClient;
 import shu.cases2.client.rest.ValueClient;
 import shu.cases2.shared.domain.NameValue;
+import shu.cases2.shared.domain.TextBox;
 
 public class ComponentView extends ViewImpl implements ComponentPresenter.MyView {
 
 	public interface Binder extends UiBinder<Widget, ComponentView> {
     }
-    @UiField MaterialButton btnLoad, btnReset;
+    @UiField MaterialButton btnLoad, btnSave;
     @UiField MaterialCheckBox cbCheckBox, cbTextBox;
     @UiField MaterialTextBox txName;
-    
+    @UiField MaterialDatePicker dpDate;
+//    @UiField MaterialModal mmErr;
     
     @Inject
     ComponentView(Binder uiBinder) {
@@ -63,20 +67,49 @@ public class ComponentView extends ViewImpl implements ComponentPresenter.MyView
     
     @UiHandler("btnLoad")
     void handlerBtnLoad(ClickEvent e) {
-        Defaults.setServiceRoot(GWT.getHostPageBaseURL());
-        ValueClient client = GWT.create(ValueClient.class);
-    	client.getValues("1", new MethodCallback<NameValue>(){
+        TextBoxClient client = GWT.create(TextBoxClient.class);
+    	client.getTextBox(new MethodCallback<TextBox>(){
 
 			@Override
 			public void onFailure(Method method, Throwable exception) {
-				
+//				MaterialModal m = new MaterialModal(){
+//					
+//				};
+				MaterialToast.fireToast(exception.getMessage());
+//				mmErr.open();
 			}
 			@Override
-			public void onSuccess(Method method, NameValue response) {
-				txName.setValue(response.getValue());
+			public void onSuccess(Method method, TextBox response) {
+				txName.setValue(response.getName());
+				cbCheckBox.setValue(response.isCheckbox());
+				enableCheckBox(cbCheckBox.getValue());
+				dpDate.setValue(response.getBirthday());
 			}
     	} );
     }
+
+    @UiHandler("btnSave")
+    void handlerBtnSave(ClickEvent e) {
+        TextBoxClient client = GWT.create(TextBoxClient.class);
+    	client.setTextBox(new TextBox(cbCheckBox.getValue(), txName.getValue(), dpDate.getValue()),
+    			           new MethodCallback<Void>(){
+
+			@Override
+			public void onFailure(Method method, Throwable exception) {
+//				MaterialModal m = new MaterialModal(){
+//					
+//				};
+				MaterialToast.fireToast(exception.getMessage());
+//				mmErr.open();
+			}
+			@Override
+			public void onSuccess(Method method, Void response) {
+				MaterialToast.fireToast("Success Post");
+				
+			}
+    	} );
+    }
+
     
     @UiHandler("cbTextBox")
     void onClickTextBox(ClickEvent e) {

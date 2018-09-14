@@ -11,7 +11,7 @@ import org.fusesource.restygwt.client.RestService;
 
 import shu.cases2.shared.domain.NameValue;
 
-@Path("/api/values")
+@Path("/rest/values")
 public interface ValueClient extends RestService{
 
 	@GET

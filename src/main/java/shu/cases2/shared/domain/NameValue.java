@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NameValue {
-	 private final String value;
+	private final String value;
 	private final String name;
 	  
 	@JsonCreator

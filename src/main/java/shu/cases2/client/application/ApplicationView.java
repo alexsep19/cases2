@@ -21,6 +21,9 @@ package shu.cases2.client.application;
 
 import javax.inject.Inject;
 
+import org.fusesource.restygwt.client.Defaults;
+
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -40,6 +43,13 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
         initWidget(uiBinder.createAndBindUi(this));
         
         bindSlot(ApplicationPresenter.SLOT_MAIN, main);
+        setupResty();
+
+    }
+
+    private void setupResty(){
+        Defaults.setServiceRoot(GWT.getHostPageBaseURL());
+        Defaults.setDateFormat(null);
     }
 
 }

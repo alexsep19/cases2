@@ -21,6 +21,10 @@ package shu.cases2.client.application;
 
 import shu.cases2.client.application.about.AboutModule;
 import shu.cases2.client.application.component.ComponentModule;
+
+import org.fusesource.restygwt.client.Defaults;
+
+import com.google.gwt.core.client.GWT;
 //import shu.cases2.client.application.home.HomeModule;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
@@ -33,4 +37,5 @@ public class ApplicationModule extends AbstractPresenterModule {
         bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
                 ApplicationPresenter.MyProxy.class);
     }
+    
 }
