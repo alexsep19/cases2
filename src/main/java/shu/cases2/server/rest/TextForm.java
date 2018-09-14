@@ -13,6 +13,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import com.google.gwt.junit.client.WithProperties.Property;
 
@@ -42,7 +43,7 @@ public class TextForm {
 	@POST
 	@Path("/{param}")
 	@Consumes(JSON_UTF8)
-	@Produces(JSON_UTF8)
+//	@Produces(JSON_UTF8)
 	public void setTextBox(@PathParam("param") TextBox textBox){
 		this.textBox = textBox;
 		System.out.println("textBox = " + textBox.isCheckbox() + " " + textBox.getName() + " " + textBox.getBirthday());
