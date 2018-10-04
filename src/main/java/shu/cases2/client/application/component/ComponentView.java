@@ -1,5 +1,8 @@
 package shu.cases2.client.application.component;
 
+import java.util.Date;
+import java.util.Optional;
+
 import org.fusesource.restygwt.client.Defaults;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
@@ -38,8 +41,10 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDatePicker;
-import gwt.material.design.client.ui.MaterialModal;
+import gwt.material.design.client.ui.MaterialDialog;
+import gwt.material.design.client.ui.MaterialDialogContent;
 import gwt.material.design.client.ui.MaterialTextBox;
+import gwt.material.design.client.ui.MaterialTitle;
 import gwt.material.design.client.ui.MaterialToast;
 import shu.cases2.client.rest.TextBoxClient;
 import shu.cases2.client.rest.ValueClient;
@@ -54,7 +59,7 @@ public class ComponentView extends ViewImpl implements ComponentPresenter.MyView
     @UiField MaterialCheckBox cbCheckBox, cbTextBox;
     @UiField MaterialTextBox txName;
     @UiField MaterialDatePicker dpDate;
-//    @UiField MaterialModal mmErr;
+    @UiField MaterialDialog dialogBottomSheet;
     
     @Inject
     ComponentView(Binder uiBinder) {
@@ -80,6 +85,14 @@ public class ComponentView extends ViewImpl implements ComponentPresenter.MyView
 			}
 			@Override
 			public void onSuccess(Method method, TextBox response) {
+//				MaterialDialog md = new MaterialDialog();
+//				MaterialDialogContent mc = new MaterialDialogContent();
+//				MaterialTitle mt = new MaterialTitle("title Success", "desc Success");
+//				mc.add(mt);
+//				md.add(mc);
+//				md.setTitle("rrrrrrrrrrrrrr");
+				dialogBottomSheet.open();
+								
 				txName.setValue(response.getName());
 				cbCheckBox.setValue(response.isCheckbox());
 				enableCheckBox(cbCheckBox.getValue());
@@ -87,28 +100,33 @@ public class ComponentView extends ViewImpl implements ComponentPresenter.MyView
 			}
     	} );
     }
-
-    @UiHandler("btnSave")
-    void handlerBtnSave(ClickEvent e) {
-        TextBoxClient client = GWT.create(TextBoxClient.class);
-    	client.setTextBox(new TextBox(cbCheckBox.getValue(), txName.getValue(), dpDate.getValue()),
-    			           new MethodCallback<Void>(){
-
-			@Override
-			public void onFailure(Method method, Throwable exception) {
-//				MaterialModal m = new MaterialModal(){
-//					
-//				};
-				MaterialToast.fireToast(exception.getMessage());
-//				mmErr.open();
-			}
-			@Override
-			public void onSuccess(Method method, Void response) {
-				MaterialToast.fireToast("Success Post");
-				
-			}
-    	} );
+    
+    @UiHandler("btnCloseBottomSheetDialog")
+    void closeFullScreen(ClickEvent e) {
+    	dialogBottomSheet.close();
     }
+    
+//    @UiHandler("btnSave")
+//    void handlerBtnSave(ClickEvent e) {
+//        TextBoxClient client = GWT.create(TextBoxClient.class);
+//    	client.setTextBox(new TextBox(true, "fffff", new Date()), new MethodCallback<Void>(){
+////    	client.setTextBox(txName.getValue()==null || txName.getValue()==""? "NULL": txName.getValue(), new MethodCallback<Void>(){
+//			@Override
+//			public void onFailure(Method method, Throwable exception) {
+//				MaterialToast.fireToast(exception.getMessage());
+//				String ret = "";
+//				for(StackTraceElement it: exception.getStackTrace()){
+//					ret += it + "\n";
+//				}
+//				MaterialToast.fireToast(ret);
+//			}
+//			@Override
+//			public void onSuccess(Method method, Void response) {
+//				MaterialToast.fireToast("Success Post");
+//				
+//			}
+//    	} );
+//    }
 
     
     @UiHandler("cbTextBox")

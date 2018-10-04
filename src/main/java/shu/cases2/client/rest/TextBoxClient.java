@@ -6,6 +6,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Request;
+import javax.ws.rs.core.Response;
 
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
@@ -18,7 +20,7 @@ public interface TextBoxClient extends RestService{
 	@GET
 	public void getTextBox(MethodCallback<TextBox> callback);
 	
-	@POST
-	@Path("/{param}")
-	public void setTextBox(@PathParam("param") TextBox textBox,  MethodCallback<Void> callback);
+//	@POST
+//	@Path("/{param}")
+//	public void setTextBox(@PathParam("param") TextBox textBox,  MethodCallback<Void> callback);
 }

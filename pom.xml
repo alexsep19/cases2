@@ -30,20 +30,21 @@
     <url>https://github.com/GwtMaterialDesign</url>
 
     <properties>
+        <target.jdk>1.8</target.jdk>
         <app.id>cases2</app.id>
         <app.version>1</app.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gwt.version>2.8.2</gwt.version>
         <gwtp.version>1.5.3</gwtp.version>
         <gin.version>2.1.2</gin.version>
-        <gwt-material.version>2.0.1</gwt-material.version>
+        <gwt-material.version>2.1.1</gwt-material.version>
         <gwt.style>OBF</gwt.style>
-
+        <jersey.version>2.27</jersey.version>
+        <version.jboss.bom>10.1.0.Final</version.jboss.bom>
+        <wildfly.deploy>d:\java\wildfly101\standalone\deployments</wildfly.deploy>
         <!-- maven -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-
-        <target.jdk>1.8</target.jdk>
 
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     </properties>
@@ -68,6 +69,13 @@
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
+            <resource>
+                <directory>${project.build.directory}</directory>
+                <targetPath>${wildfly.deploy}</targetPath> 
+                <includes>
+                   <include>*.war</include>
+                </includes>
+            </resource>
         </resources>
 
         <plugins>
@@ -84,6 +92,16 @@
 
             <!-- GWT -->
             <plugin>
+                 <artifactId>maven-war-plugin</artifactId>
+                 <version>${maven-war-plugin.version}</version>
+                 <configuration>
+                    <warSourceExcludes>**/client/**</warSourceExcludes>
+                    <packagingExcludes>**/client/application/about/*.class</packagingExcludes>
+                    <packagingExcludes>**/client/application/*.class</packagingExcludes>
+                    <packagingExcludes>WEB-INF/classes/shu/cases2/client</packagingExcludes>
+                 </configuration> 
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
                 <version>${gwt.version}</version>
@@ -98,6 +116,7 @@
 
                     <runTarget>index.html</runTarget>
                     <module>shu.cases2.GwtMaterialBasic</module>
+                    <noServer>true</noServer>
                 </configuration>
                 <executions>
                     <execution>
@@ -132,20 +151,21 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JDT -->
+        <!-- JDT 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-
+-->
         <!-- GWTP -->
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-mvp-client</artifactId>
             <version>${gwtp.version}</version>
-            <scope>provided</scope>
+<!--             <scope>provided</scope>
+ -->
         </dependency>
 
         <!-- GwtMaterial -->
@@ -175,7 +195,8 @@
             <groupId>com.google.gwt.inject</groupId>
             <artifactId>gin</artifactId>
             <version>${gin.version}</version>
-            <scope>provided</scope>
+<!--              <scope>provided</scope>
+-->
         </dependency>
 
         <!-- JUnit -->
@@ -187,34 +208,56 @@
         </dependency>
         
         <!-- jersey -->
-        <dependency>
+         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
-            <version>2.27</version>
-        </dependency>
-        <dependency>
-        	<groupId>org.glassfish.jersey.inject</groupId>
-			<artifactId>jersey-hk2</artifactId>
-			<version>2.26</version>
+            <version>${jersey.version}</version>
         </dependency>
         
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-multipart</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        
+       <dependency>
+        	<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>${jersey.version}</version>
+        </dependency>
+
+        <dependency>
+        	<groupId>org.glassfish.jersey.media</groupId>
+    		<artifactId>jersey-media-json-jackson</artifactId>
+    		<version>${jersey.version}</version>
+        </dependency>
+      
         <!-- Rest -->
         <dependency>
         	<groupId>javax.ws.rs</groupId>
     		<artifactId>javax.ws.rs-api</artifactId>
     		<version>2.1</version>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-jaxrs 
         <dependency>
-        	<groupId>org.glassfish.jersey.media</groupId>
-    		<artifactId>jersey-media-json-jackson</artifactId>
-    		<version>2.27</version>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-jaxrs</artifactId>
+            <version>${version.jboss.bom}</version>
+            <scope>provided</scope>
         </dependency>
+-->        
         <dependency>
     		<groupId>com.fasterxml.jackson.jaxrs</groupId>
     		<artifactId>jackson-jaxrs-json-provider</artifactId>
     		<version>2.9.6</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.9.0</version>
+        </dependency>
         <!-- Resty -->
         <dependency>
 			<groupId>org.fusesource.restygwt</groupId>

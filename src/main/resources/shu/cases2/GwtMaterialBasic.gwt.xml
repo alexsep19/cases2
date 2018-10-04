@@ -41,6 +41,8 @@
 	<inherits name="shu.cases2.client.Resources"/>
 	
 	<inherits name="org.fusesource.restygwt.RestyGWT"/>
+	<inherits name="com.github.nmorel.gwtjackson.GwtJackson" />
+    <set-property name="restygwt.encodeDecode.useGwtJackson" value="true" />
 	
     <set-configuration-property name="CssResource.enableGss" value="true"/>
 </module>

@@ -20,8 +20,10 @@
 package shu.cases2.client.application;
 
 import javax.inject.Inject;
+import javax.ws.rs.client.Client;
 
 import org.fusesource.restygwt.client.Defaults;
+//import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -48,7 +50,12 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     }
 
     private void setupResty(){
+//    	final ClientConfig clientConfig = new ClientConfig();
+//        clientConfig.register(MultiPartFeature.class);
+//        Client client = ClientFactory.newClient(clientConfig);
+        
         Defaults.setServiceRoot(GWT.getHostPageBaseURL());
+//        Defaults.setServiceRoot(GWT.getModuleBaseURL()); 
         Defaults.setDateFormat(null);
     }
 

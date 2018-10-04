@@ -30,16 +30,28 @@
        		<param-name>jersey.config.server.provider.packages</param-name>
        		<param-value>shu.cases2.server.rest</param-value>
        </init-param>
+       
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>shu.cases2.server.rest.api.ApplicationConfig</param-value>
+        </init-param>
+        
        <init-param>
         	<param-name>jersey.config.server.provider.classnames</param-name>
         	<param-value>org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
        </init-param>
+
     </servlet>
     <servlet-mapping>
     	<servlet-name>RestServlet</servlet-name>
     	<url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
-        
+ <!-- 
+   <servlet-mapping>
+     <servlet-name>javax.ws.rs.core.Application</servlet-name>
+     <url-pattern>/rest/*</url-pattern>
+   </servlet-mapping>
+ -->        
     <welcome-file-list>
         <welcome-file>index3.html</welcome-file>
     </welcome-file-list>

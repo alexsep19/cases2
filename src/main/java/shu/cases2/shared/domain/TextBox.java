@@ -10,13 +10,14 @@ public class TextBox {
 	private String name;
     private Date birthday;
  
+    public TextBox(){}
+    
     @JsonCreator
 	public TextBox(@JsonProperty("checkbox") boolean checkbox, @JsonProperty("name") String name , @JsonProperty("birthday") Date birthday){
     	this.checkbox = checkbox;
     	this.name = name;
     	this.birthday = birthday;
 	}
-
 
     public Boolean isCheckbox() {
 		return checkbox;
