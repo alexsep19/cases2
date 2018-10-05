@@ -21,6 +21,7 @@ package shu.cases2.client.application;
 
 import shu.cases2.client.application.about.AboutModule;
 import shu.cases2.client.application.component.ComponentModule;
+import shu.cases2.client.application.table.TableModule;
 
 import org.fusesource.restygwt.client.Defaults;
 
@@ -31,9 +32,9 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 public class ApplicationModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-//        install(new HomeModule());
         install(new AboutModule());
         install(new ComponentModule());
+        install(new TableModule());
         bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
                 ApplicationPresenter.MyProxy.class);
     }

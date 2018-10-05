@@ -51,6 +51,6 @@ public class AboutPresenter extends Presenter<AboutPresenter.MyView, AboutPresen
     protected void onReveal() {
         super.onReveal();
 
-//        SetPageTitleEvent.fire("GWT Material", "A Material Design look and feel for GWT Apps.", "", "", this);
+        SetPageTitleEvent.fire("GWT Material"/*, "", "", ""*/, this);
     }
 }

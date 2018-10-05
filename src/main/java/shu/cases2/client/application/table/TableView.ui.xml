@@ -46,7 +46,7 @@
     <m:MaterialRow addStyleNames="code">
         <m:MaterialColumn width="300px" title="TextBox" shadow="1">
         <m:MaterialRow>
-        	<m:MaterialTitle  title="TextBox" scrollspy="data_pager"/>
+        	<m:MaterialTitle  title="TextBox"/>
         		<m:MaterialRow>
 					<m:MaterialTextBox fieldType="FILLED" label="Фамилия" maxLength="20"/>
 					<m:MaterialTextBox fieldType="FILLED" ui:field="txName" label="Имя" placeholder="This is a placeholder"/>
@@ -58,7 +58,7 @@
  -->
   				   	<m:MaterialButton ui:field="btnLoad" padding="2" fontSize="12px" margin="4" width="100px" text="Загрузить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
  				   	<m:MaterialButton ui:field="btnSave" padding="2" fontSize="12px" margin="4" width="100px" text="Сохранить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
-<!-- 				   	
+ 				   	
  				    <m:MaterialDialog ui:field="dialogBottomSheet" type="FIXED_FOOTER" dismissible="false" inDuration="500" outDuration="500">
 	        			<m:MaterialDialogContent>
           					<m:MaterialTitle title="Bottom Sheet Dialog" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" />
@@ -67,7 +67,6 @@
           					<m:MaterialButton text="Close Dialog" type="FLAT" ui:field="btnCloseBottomSheetDialog"/>
         				</m:MaterialDialogFooter>
       				</m:MaterialDialog>
--->      				
 			</m:MaterialRow>
 		</m:MaterialColumn>
 	</m:MaterialRow>

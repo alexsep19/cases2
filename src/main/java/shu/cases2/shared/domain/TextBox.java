@@ -1,12 +1,14 @@
 package shu.cases2.shared.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class TextBox {
-    private Boolean checkbox;
+public class TextBox implements Serializable{
+	private static final long serialVersionUID = 1L;
+	private Boolean checkbox;
 	private String name;
     private Date birthday;
  

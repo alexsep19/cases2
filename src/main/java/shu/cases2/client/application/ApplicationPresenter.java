@@ -20,6 +20,7 @@
 package shu.cases2.client.application;
 
 import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -27,12 +28,18 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
+import com.gwtplatform.mvp.client.proxy.NavigationEvent;
+import com.gwtplatform.mvp.client.proxy.NavigationHandler;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 
+import shu.cases2.client.event.SetPageTitleEvent;
+
 public class ApplicationPresenter
-        extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy> {
+        extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy> 
+        implements SetPageTitleEvent.SetPageTitleHandler{
     interface MyView extends View {
+		void setPageTitle(String title);
     }
 
     @ProxyStandard
@@ -50,4 +57,21 @@ public class ApplicationPresenter
             MyProxy proxy) {
         super(eventBus, view, proxy, RevealType.Root);
     }
+    
+    @Override
+    protected void onBind() {
+        super.onBind();
+        addRegisteredHandler(SetPageTitleEvent.TYPE, this);
+    }
+    
+//    @Override
+//    public void onNavigation(NavigationEvent navigationEvent) {
+//        Window.scrollTo(0, 0);
+//    }
+
+    @Override
+    public void onSetPageTitle(SetPageTitleEvent event) {
+        getView().setPageTitle(event.getTitle());
+    }
+
 }

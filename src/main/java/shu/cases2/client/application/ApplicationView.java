@@ -34,21 +34,53 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 
+import gwt.material.design.client.ui.MaterialLabel;
+import gwt.material.design.client.ui.MaterialNavBrand;
+import gwt.material.design.client.ui.animate.MaterialAnimation;
+import gwt.material.design.client.ui.animate.Transition;
+
 public class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
     interface Binder extends UiBinder<Widget, ApplicationView> {
     }
     
-    @UiField HTMLPanel main;
+    @UiField HTMLPanel content;
+
+	@UiField
+	MaterialNavBrand title;
     
     @Inject
     ApplicationView(Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
         
-        bindSlot(ApplicationPresenter.SLOT_MAIN, main);
+        bindSlot(ApplicationPresenter.SLOT_MAIN, content);
         setupResty();
 
     }
+    @Override
+    public void setPageTitle(String title) {
+        this.title.setText(title);
+//        this.description.setText(description);
+//        this.link = link;
+//        this.specification = specification;
 
+//        if (link.isEmpty()) {
+//            chipJava.setVisible(false);
+//            chipXml.setVisible(false);
+//        } else {
+//            chipJava.setVisible(true);
+//            chipXml.setVisible(true);
+//        }
+//
+//        if (specification.isEmpty()) {
+//            chipSpecification.setVisible(false);
+//        } else {
+//            chipSpecification.setVisible(true);
+//        }
+
+//        new MaterialAnimation().transition(Transition.BOUNCEINLEFT).animate(this.title);
+//        new MaterialAnimation().transition(Transition.BOUNCEINLEFT).animate(this.description);
+    }
+    
     private void setupResty(){
 //    	final ClientConfig clientConfig = new ClientConfig();
 //        clientConfig.register(MultiPartFeature.class);

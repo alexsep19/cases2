@@ -9,6 +9,7 @@ import org.fusesource.restygwt.client.MethodCallback;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 
 /*
  * #%L
@@ -34,15 +35,19 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
 
+import gwt.material.design.client.constants.ButtonType;
+import gwt.material.design.client.constants.DialogType;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDatePicker;
 import gwt.material.design.client.ui.MaterialDialog;
 import gwt.material.design.client.ui.MaterialDialogContent;
+import gwt.material.design.client.ui.MaterialDialogFooter;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialTitle;
 import gwt.material.design.client.ui.MaterialToast;
@@ -59,7 +64,7 @@ public class ComponentView extends ViewImpl implements ComponentPresenter.MyView
     @UiField MaterialCheckBox cbCheckBox, cbTextBox;
     @UiField MaterialTextBox txName;
     @UiField MaterialDatePicker dpDate;
-    @UiField MaterialDialog dialogBottomSheet;
+//    @UiField MaterialDialog dialogBottomSheet;
     
     @Inject
     ComponentView(Binder uiBinder) {
@@ -85,13 +90,30 @@ public class ComponentView extends ViewImpl implements ComponentPresenter.MyView
 			}
 			@Override
 			public void onSuccess(Method method, TextBox response) {
-//				MaterialDialog md = new MaterialDialog();
-//				MaterialDialogContent mc = new MaterialDialogContent();
-//				MaterialTitle mt = new MaterialTitle("title Success", "desc Success");
-//				mc.add(mt);
-//				md.add(mc);
+				final MaterialDialog md = new MaterialDialog();
+				md.setType(DialogType.FIXED_FOOTER);
+				md.setDismissible(true);
+				md.setInDuration(100);
+				md.setOutDuration(100);
+				MaterialDialogContent mc = new MaterialDialogContent();
+				MaterialTitle mt = new MaterialTitle("title Успешно", "Пропустить");
+				mc.add(mt);
+				MaterialDialogFooter mdf = new MaterialDialogFooter();
+				MaterialButton mb = new MaterialButton("Закрыть"); 
+				mb.setType(ButtonType.FLAT);
+				mb.addClickHandler(new ClickHandler(){
+					@Override
+					public void onClick(ClickEvent event){
+					  md.close(true);
+					}
+				});
+				mdf.add(mb);
+				md.add(mc);
+				md.add(mdf);
 //				md.setTitle("rrrrrrrrrrrrrr");
-				dialogBottomSheet.open();
+				RootPanel.get().add(md);
+				md.open();
+//				dialogBottomSheet.open();
 								
 				txName.setValue(response.getName());
 				cbCheckBox.setValue(response.isCheckbox());
@@ -101,10 +123,10 @@ public class ComponentView extends ViewImpl implements ComponentPresenter.MyView
     	} );
     }
     
-    @UiHandler("btnCloseBottomSheetDialog")
-    void closeFullScreen(ClickEvent e) {
-    	dialogBottomSheet.close();
-    }
+//    @UiHandler("btnCloseBottomSheetDialog")
+//    void closeFullScreen(ClickEvent e) {
+//    	dialogBottomSheet.close();
+//    }
     
 //    @UiHandler("btnSave")
 //    void handlerBtnSave(ClickEvent e) {

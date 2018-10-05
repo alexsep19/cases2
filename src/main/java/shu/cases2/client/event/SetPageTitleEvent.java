@@ -34,36 +34,36 @@ public class SetPageTitleEvent extends GwtEvent<SetPageTitleEvent.SetPageTitleHa
     public static final Type<SetPageTitleHandler> TYPE = new Type<>();
 
     private final String title;
-    private final String description;
-    private final String link;
-    private final String specification;
+//    private final String description;
+//    private final String link;
+//    private final String specification;
 
-    public SetPageTitleEvent(String title, String description, String link, String specification) {
+    public SetPageTitleEvent(String title/*, String description, String link, String specification*/) {
         this.title = title;
-        this.description = description;
-        this.link = link;
-        this.specification = specification;
+//        this.description = description;
+//        this.link = link;
+//        this.specification = specification;
     }
 
-    public static void fire(String title, String description, String link, String specification, HasHandlers source) {
-        source.fireEvent(new SetPageTitleEvent(title, description, link, specification));
+    public static void fire(String title, /*String description, String link, String specification,*/ HasHandlers source) {
+        source.fireEvent(new SetPageTitleEvent(title/*, description, link, specification*/));
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public String getSpecification() {
-        return specification;
-    }
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public String getLink() {
+//        return link;
+//    }
+//
+//    public String getSpecification() {
+//        return specification;
+//    }
 
     @Override
     public Type<SetPageTitleHandler> getAssociatedType() {

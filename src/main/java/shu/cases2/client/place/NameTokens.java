@@ -23,8 +23,13 @@ public class NameTokens {
 //    public static final String HOME = "/";
     public static final String about = "about";
     public static final String component = "component";
+    public static final String table = "table";
     
-    public static String getComponent() {
+    public static String getTable() {
+		return table;
+	}
+
+	public static String getComponent() {
 		return component;
 	}
 

@@ -50,5 +50,6 @@ public class ComponentPresenter extends Presenter<ComponentPresenter.MyView, Com
     @Override
     protected void onReveal() {
         super.onReveal();
+        SetPageTitleEvent.fire(NameTokens.component/*, "", "", ""*/, this);
     }
 }
