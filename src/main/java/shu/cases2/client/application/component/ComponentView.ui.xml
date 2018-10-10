@@ -56,7 +56,7 @@
 				</m:MaterialRow>
 <!-- 				   	<m:MaterialButton ui:field="btnLoad" addStyleNames="{style.btn}" text="Загрузить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
  -->
-  				   	<m:MaterialButton ui:field="btnLoad" padding="2" fontSize="12px" margin="4" width="100px" text="Загрузить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
+  				   	<m:MaterialButton ui:field="btnLoad" marginRight="12" padding="2" fontSize="12px" margin="4" width="100px" text="Загрузить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
  				   	<m:MaterialButton ui:field="btnSave" padding="2" fontSize="12px" margin="4" width="100px" text="Сохранить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
 <!-- 				   	
  				    <m:MaterialDialog ui:field="dialogBottomSheet" type="FIXED_FOOTER" dismissible="false" inDuration="500" outDuration="500">

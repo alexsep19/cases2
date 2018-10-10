@@ -19,67 +19,20 @@
   -->
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' 
 			 xmlns:g='urn:import:com.google.gwt.user.client.ui'
+			 xmlns:table="urn:import:shu.cases2.client.application.table"
              xmlns:m="urn:import:gwt.material.design.client.ui">
-<!--     <ui:style>
-       .btn { width: 100px;
-              padding: 2px;
-              fontSize: 12px;
-              margin: 4px;
-              width: 100px
-            }
-    </ui:style>
- -->    
-    <ui:with field='res' type='shu.cases2.client.resources.AppResources' />
-
-    <g:HTMLPanel>
-<!--     <m:MaterialModal ui:field="mmErr" type="DEFAULT" dismissable="false" inDuration="500" outDuration="500">
- 
-    <m:MaterialModal ui:field="mmErr" >
-      <m:MaterialModalContent>
-        <m:MaterialTitle title="Default Modal" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" />
-      </m:MaterialModalContent>
-      <m:MaterialModalFooter>
-         <m:MaterialButton text="Close Modal" type="FLAT"/>
-      </m:MaterialModalFooter>
-    </m:MaterialModal>
- -->   
-    <m:MaterialRow addStyleNames="code">
-        <m:MaterialColumn width="300px" title="TextBox" shadow="1">
-        <m:MaterialRow>
-        	<m:MaterialTitle  title="TextBox"/>
-        		<m:MaterialRow>
-					<m:MaterialTextBox fieldType="FILLED" label="Фамилия" maxLength="20"/>
-					<m:MaterialTextBox fieldType="FILLED" ui:field="txName" label="Имя" placeholder="This is a placeholder"/>
- 					<m:MaterialCheckBox ui:field="cbCheckBox" text="вкл чекБокс" type="FILLED"/>
-					<m:MaterialCheckBox ui:field="cbTextBox" text="вкл имя" type="FILLED"/>
-					<m:MaterialDatePicker fieldType="FILLED" ui:field="dpDate" placeholder="Birthday" container="BODY" autoClose="true" format="dd.mm.yyyy" language="RU"/>
-				</m:MaterialRow>
-<!-- 				   	<m:MaterialButton ui:field="btnLoad" addStyleNames="{style.btn}" text="Загрузить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
- -->
-  				   	<m:MaterialButton ui:field="btnLoad" padding="2" fontSize="12px" margin="4" width="100px" text="Загрузить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
- 				   	<m:MaterialButton ui:field="btnSave" padding="2" fontSize="12px" margin="4" width="100px" text="Сохранить" backgroundColor="WHITE" textColor="BLACK" waves="DEFAULT"/>
- 				   	
- 				    <m:MaterialDialog ui:field="dialogBottomSheet" type="FIXED_FOOTER" dismissible="false" inDuration="500" outDuration="500">
-	        			<m:MaterialDialogContent>
-          					<m:MaterialTitle title="Bottom Sheet Dialog" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" />
-        				</m:MaterialDialogContent>
-        				<m:MaterialDialogFooter>
-          					<m:MaterialButton text="Close Dialog" type="FLAT" ui:field="btnCloseBottomSheetDialog"/>
-        				</m:MaterialDialogFooter>
-      				</m:MaterialDialog>
-			</m:MaterialRow>
-		</m:MaterialColumn>
-	</m:MaterialRow>
- <!--    
-    <m:MaterialRow addStyleNames="code">
-      <m:MaterialTitle  title="Floating" description="The floating circular action button is meant for very important functions."/>
-      <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" size="LARGE" backgroundColor="RED" iconType="CAKE" />
-      <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" size="LARGE" iconType="ANDROID" />
-      <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" size="LARGE" iconType="MESSAGE" enabled="false"/>
-      <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" size="LARGE" iconType="GROUP" />
-      <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" size="LARGE" backgroundColor="RED" iconType="CAKE" />
-      <m:MaterialButton margin="8" type="FLOATING" waves="DEFAULT" size="LARGE" backgroundColor="WHITE" iconColor="GREEN" iconType="ANDROID" />
+<m:MaterialRow>
+        <m:MaterialColumn grid="s12">
+            <m:MaterialRow addStyleNames="code">
+                <m:MaterialTitle scrollspy="data_pager" title="Таблица со страницами"/>
+                <m:table.MaterialDataTable shadow="1" marginTop="20" ui:field="table"
+                                           height="100%"
+                                           useStickyHeader="true"
+                                           useCategories="false"
+                                           useRowExpansion="true"
+                                           selectionType="MULTIPLE"/>
+                
+            </m:MaterialRow>
+        </m:MaterialColumn>
     </m:MaterialRow>
-     -->
-    </g:HTMLPanel>
 </ui:UiBinder>

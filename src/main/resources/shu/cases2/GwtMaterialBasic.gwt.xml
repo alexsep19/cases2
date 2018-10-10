@@ -23,8 +23,13 @@
         "http://google-web-toolkit.googlecode.com/svn/tags/2.7.0/distro-source/core/src/gwt-module.dtd">
 <module rename-to='GwtMaterialBasic'>
     <inherits name='com.google.gwt.user.User'/>
-    <inherits name="com.gwtplatform.mvp.MvpWithEntryPoint"/>
-
+    <inherits name='com.google.gwt.inject.Inject'/>
+    
+<!--GWTP-->
+<!--      <inherits name='com.gwtplatform.dispatch.Dispatch'/>
+-->
+    <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
+    
     <extend-configuration-property name="gin.ginjector.modules"
                                    value="shu.cases2.client.gin.ClientModule"/>
 
@@ -44,5 +49,6 @@
 	<inherits name="com.github.nmorel.gwtjackson.GwtJackson" />
     <set-property name="restygwt.encodeDecode.useGwtJackson" value="true" />
 	
-    <set-configuration-property name="CssResource.enableGss" value="true"/>
+<!--     <set-configuration-property name="CssResource.enableGss" value="true"/>
+ -->
 </module>
