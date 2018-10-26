@@ -35,7 +35,7 @@ public class ClientModule extends AbstractPresenterModule {
         install(new DefaultModule.Builder().build());
         install(new ApplicationModule());
 
-        bind(ResourceLoader.class).asEagerSingleton();
+//        bind(ResourceLoader.class).asEagerSingleton();
 
         // DefaultPlaceManager Places
         bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.component);

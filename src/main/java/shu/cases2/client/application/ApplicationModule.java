@@ -22,6 +22,7 @@ package shu.cases2.client.application;
 import shu.cases2.client.application.about.AboutModule;
 import shu.cases2.client.application.component.ComponentModule;
 import shu.cases2.client.application.table.TableModule;
+import shu.cases2.client.application.tablenopage.TableModuleNP;
 
 import org.fusesource.restygwt.client.Defaults;
 
@@ -35,6 +36,7 @@ public class ApplicationModule extends AbstractPresenterModule {
         install(new AboutModule());
         install(new ComponentModule());
         install(new TableModule());
+        install(new TableModuleNP());
         bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
                 ApplicationPresenter.MyProxy.class);
     }

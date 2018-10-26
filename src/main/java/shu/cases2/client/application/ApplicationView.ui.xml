@@ -59,6 +59,9 @@
 
         <m:MaterialSideNavPush m:id="sidenav" width="180">
             <m.html:ListItem waves="DEFAULT">
+				<m:MaterialLink targetHistoryToken="{tokens.getTablenp}" iconPosition="LEFT" iconType="POLYMER" text="Table no page"/>
+			</m.html:ListItem>
+            <m.html:ListItem waves="DEFAULT">
 				<m:MaterialLink targetHistoryToken="{tokens.getTable}" iconPosition="LEFT" iconType="POLYMER" text="Table"/>
 			</m.html:ListItem>
             <m.html:ListItem waves="DEFAULT">

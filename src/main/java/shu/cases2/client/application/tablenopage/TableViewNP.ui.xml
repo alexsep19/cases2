@@ -24,9 +24,9 @@
 <m:MaterialRow>
         <m:MaterialColumn grid="s12">
             <m:MaterialRow addStyleNames="code">
-                <m:MaterialTitle scrollspy="data_pager" title="Таблица со страницами"/>
+                <m:MaterialTitle scrollspy="custom_table" title="Таблица без страниц"/>
                 <m:table.MaterialDataTable shadow="1" marginTop="20" ui:field="table"
-                                           height="100%"
+                                           height="calc(100vh - 400px)"
                                            useStickyHeader="false"
                                            useCategories="false"
                                            useRowExpansion="false"

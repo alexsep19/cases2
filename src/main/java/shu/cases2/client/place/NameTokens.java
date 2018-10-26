@@ -24,8 +24,13 @@ public class NameTokens {
     public static final String about = "about";
     public static final String component = "component";
     public static final String table = "table";
+    public static final String tablenp = "tablenp";
     
-    public static String getTable() {
+    public static String getTablenp() {
+		return tablenp;
+	}
+
+	public static String getTable() {
 		return table;
 	}
 

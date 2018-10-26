@@ -48,6 +48,8 @@
 	<inherits name="org.fusesource.restygwt.RestyGWT"/>
 	<inherits name="com.github.nmorel.gwtjackson.GwtJackson" />
     <set-property name="restygwt.encodeDecode.useGwtJackson" value="true" />
+    
+    <extend-property name="locale" values="ru"/>
 	
 <!--     <set-configuration-property name="CssResource.enableGss" value="true"/>
  -->

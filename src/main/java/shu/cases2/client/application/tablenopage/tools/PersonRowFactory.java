@@ -1,4 +1,4 @@
-package shu.cases2.client.application.table;
+package shu.cases2.client.application.tablenopage.tools;
 
 /*
  * #%L
