@@ -42,13 +42,14 @@
     <inherits name="gwt.material.design.themes.ThemeBlue"/>
     <inherits name="gwt.material.design.addins.GwtMaterialAddinsDebug"/>
     <inherits name="gwt.material.design.GwtMaterialTableDebug"/>
+    <inherits name="gwt.material.design.GwtMaterialDesignBasic" />
 
 	<inherits name="shu.cases2.client.Resources"/>
-	
+<!-- 	
 	<inherits name="org.fusesource.restygwt.RestyGWT"/>
 	<inherits name="com.github.nmorel.gwtjackson.GwtJackson" />
     <set-property name="restygwt.encodeDecode.useGwtJackson" value="true" />
-    
+ -->    
     <extend-property name="locale" values="ru"/>
 	
 <!--     <set-configuration-property name="CssResource.enableGss" value="true"/>

@@ -12,13 +12,14 @@ import javax.ws.rs.core.Response;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
 
-import shu.cases2.shared.domain.TextBox;
+import shu.cases2.shared.domain.TextBox1;
 
-@Path("/rest/textform")
-public interface TextBoxClient extends RestService{
+//@Path("/rest/textform")
+public interface TextBoxClient{ 
+//extends RestService{
 	
-	@GET
-	public void getTextBox(MethodCallback<TextBox> callback);
+//	@GET
+//	public void getTextBox(MethodCallback<TextBox1> callback);
 	
 //	@POST
 //	@Path("/{param}")

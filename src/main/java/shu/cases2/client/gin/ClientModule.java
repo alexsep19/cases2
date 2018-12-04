@@ -32,7 +32,7 @@ import shu.cases2.client.resources.ResourceLoader;
 public class ClientModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        install(new DefaultModule.Builder().build());
+        install(new DefaultModule());
         install(new ApplicationModule());
 
 //        bind(ResourceLoader.class).asEagerSingleton();

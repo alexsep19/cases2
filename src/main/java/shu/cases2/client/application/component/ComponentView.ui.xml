@@ -28,8 +28,8 @@
               width: 100px
             }
     </ui:style>
- -->    
     <ui:with field='res' type='shu.cases2.client.resources.AppResources' />
+ -->    
 
     <g:HTMLPanel>
 <!--     <m:MaterialModal ui:field="mmErr" type="DEFAULT" dismissable="false" inDuration="500" outDuration="500">

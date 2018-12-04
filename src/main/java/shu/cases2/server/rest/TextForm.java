@@ -22,12 +22,13 @@ import javax.xml.bind.JAXB;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
-import shu.cases2.shared.domain.TextBox;
+import shu.cases2.shared.domain.TextBox1;
+
 import static javax.ws.rs.core.MediaType.*;
 
 @Path("textform")
 public class TextForm {
-	TextBox textBox;
+	TextBox1 textBox;
 	
 	public TextForm() {
 		Date date = null;
@@ -36,13 +37,13 @@ public class TextForm {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		textBox = new TextBox(true, "Фафа", date);
+		textBox = new TextBox1(true, "Фафа", date);
 //		textBox = new TextBox(true, "Фафа");
 	}
 	
 	@GET
 	@Produces(JSON_UTF8)
-	public TextBox getTextBox() {
+	public TextBox1 getTextBox() {
 	    return textBox;
 	}
 	

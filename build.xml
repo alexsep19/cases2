@@ -1,0 +1,93 @@
+<project name="cases2" basedir="." default="codeserver">
+
+
+<!--    <property file="build.properties" />
+    <property environment="env"/>
+-->
+    <!--<property name="env.JAVA_HOME" value="${JAVA_HOME}"/>-->
+    <!--my changes branch 3.0.5 second changes -->
+
+    <!--changes in master 16.03-->
+
+
+    <!--<property name="src" value="c:\IdeaProjects\BarsGL_Online\barsgl\barsgl-gwt\barsgl-gwt-client\target\classes\ru\rbt\barsgl\gwt\"/>-->
+    <property name="src" value="c:\IdeaProjects\BarsGL_Online\barsgl\barsgl-gwt\barsgl-gwt-client\src\main\java\"/>
+    <!--<property name="build" value=""/>-->
+    <!--<javac srcdir="${src}" destdir="${build}" classpath="" source="1.8"/>-->
+
+    <!--<target name="javac"></target> depends="javac"
+       <pathelement location="c:\IdeaProjects\BarsGL_Online\barsgl\security\security-gwt-client\src\main\java\ru\rbt\security\gwt\client/*"/>
+            <pathelement location="d:/prj/cases2/src/main/resources/"/>
+
+    -->
+
+    <target name="codeserver" description="Run Code Server mode">
+    <java failonerror="true" fork="true" classname="com.google.gwt.dev.codeserver.CodeServer">
+        <classpath>
+            <path id="project.class.path"/>
+        	<pathelement location="c:/Users/er22317/.m2/repository/com/google/gwt/inject/gin/2.1.2/gin-2.1.2.jar"/>
+        	<pathelement location="c:/Users/er22317/.m2/repository/com/google/gwt/inject/gin/2.1.2/gin-2.1.2-sources.jar"/>
+        	
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\gwtplatform\gwtp-mvp-client\1.5.3/gwtp-mvp-client-1.5.3.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\gwtplatform\gwtp-mvp-client\1.5.3/gwtp-mvp-client-1.5.3-sources.jar"/>
+        	
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\gwtplatform\gwtp-mvp-shared\1.5.3/gwtp-mvp-shared-1.5.3.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\gwtplatform\gwtp-mvp-shared\1.5.3/gwtp-mvp-shared-1.5.3-sources.jar"/>
+        	
+        	<pathelement location="d:\prj\cases2\target\cases2-1.0-SNAPSHOT\WEB-INF\lib/gwtp-clients-common-1.5.3.jar"/>
+        	
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\github\gwtmaterialdesign\gwt-material\2.1.1\gwt-material-2.1.1.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\github\gwtmaterialdesign\gwt-material\2.1.1\gwt-material-2.1.1-sources.jar"/>
+        	
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\github\gwtmaterialdesign\gwt-material-jquery\2.1.1\gwt-material-jquery-2.1.1.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\github\gwtmaterialdesign\gwt-material-jquery\2.1.1\gwt-material-jquery-2.1.1-sources.jar"/>
+
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\github\gwtmaterialdesign\gwt-material-themes\2.1.1\gwt-material-themes-2.1.1.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\github\gwtmaterialdesign\gwt-material-themes\2.1.1\gwt-material-themes-2.1.1-sources.jar"/>
+
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\github\gwtmaterialdesign\gwt-material-addins\2.1.1\gwt-material-addins-2.1.1.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\github\gwtmaterialdesign\gwt-material-addins\2.1.1\gwt-material-addins-2.1.1-sources.jar"/>
+
+      		<pathelement location="c:\Users\er22317\.m2\repository\com\github\gwtmaterialdesign\gwt-material-table\2.1.1\gwt-material-table-2.1.1.jar"/>
+    		<pathelement location="c:\Users\er22317\.m2\repository\com\github\gwtmaterialdesign\gwt-material-table\2.1.1\gwt-material-table-2.1.1-sources.jar"/>
+        	
+        	<pathelement location="c:\Users\er22317\.m2\repository\javax\inject\javax.inject\1\javax.inject-1.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\google\inject\guice\3.0\guice-3.0.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\com\google\inject\extensions\guice-assistedinject\3.0\guice-assistedinject-3.0.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\org\apache\velocity\velocity\1.7\velocity-1.7.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar"/>
+        	<pathelement location="c:\Users\er22317\.m2\repository\commons-lang\commons-lang\2.4\commons-lang-2.4.jar"/>
+        	
+        	<pathelement location="d:\prj\cases2\target\cases2-1.0-SNAPSHOT\WEB-INF\classes"/>
+        	<pathelement location="d:\prj\cases2\src"/>
+        	
+            <pathelement location="d:/java/gwt-2.8.2/*" />
+            <pathelement location="d:/java/gwt-2.8.2/gwt-codeserver.jar" />
+            <pathelement location="d:/java/gwt-2.8.2/validation-api-1.0.0.GA.jar" />
+            <pathelement location="d:/java/gwt-2.8.2/validation-api-1.0.0.GA-sources.jar" />
+        </classpath>
+        <jvmarg value="-Xmx1024M"/>
+            <!--<arg value="-bindAddress"/>-->
+            <!--<arg value="0.0.0.0"/>-->
+            <arg line="-port"/>
+            <arg value="9877"/>
+            <!--<arg value="-workDir"/>-->
+            <!--<arg value="workDir"/>-->
+            <arg line="-logLevel"/>
+            <arg value="DEBUG"/>
+<!--
+            <arg line="-src"/>
+
+            <arg line="-src"/>
+            <arg value="./src/main/java/shu/cases2/client/"/>
+-->
+            <arg line="-src"/>
+            <!--<arg value="c:\IdeaProjects\BarsGL_Online\barsgl\barsgl-gwt\barsgl-gwt-client\target\classes\"/>-->
+            <arg value="./src/main/resources/"/>
+    	    <arg value="shu.cases2.GwtMaterialBasic"/>
+        <!--           
+        <arg value="com.google.gwt.sample.hello.Hello"/>
+        -->
+    </java>
+    </target>
+</project>

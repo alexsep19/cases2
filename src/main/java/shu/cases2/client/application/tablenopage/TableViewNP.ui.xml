@@ -14,25 +14,32 @@
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
-  limitations under the License.
+  limitations under the License.marginTop="20" 
   #L%
   -->
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' 
 			 xmlns:g='urn:import:com.google.gwt.user.client.ui'
-			 xmlns:table="urn:import:shu.cases2.client.application.table"
              xmlns:m="urn:import:gwt.material.design.client.ui">
+<!--              
+  <ui:with field="tokens" type="shu.cases2.client.place.NameTokens"/>
+  <ui:with field='res' type='shu.cases2.client.resources.AppResources' />
+ -->             
 <m:MaterialRow>
         <m:MaterialColumn grid="s12">
             <m:MaterialRow addStyleNames="code">
-                <m:MaterialTitle scrollspy="custom_table" title="Таблица без страниц"/>
-                <m:table.MaterialDataTable shadow="1" marginTop="20" ui:field="table"
+               <m:MaterialTitle scrollspy="context_menu" title="Таблица без страницов"/> 
+                                           
+                <m:table.MaterialDataTable ui:field="table"
+                                           marginTop="20" 
                                            height="calc(100vh - 400px)"
-                                           useStickyHeader="false"
+                                           shadow="1"
+                						   useStickyHeader="true"
                                            useCategories="false"
                                            useRowExpansion="false"
                                            selectionType="SINGLE"/>
-                
+               
             </m:MaterialRow>
-        </m:MaterialColumn>
+         </m:MaterialColumn>
+
     </m:MaterialRow>
 </ui:UiBinder>

@@ -48,8 +48,8 @@
  -->  
     <m:MaterialPanel>
         <m:MaterialHeader width="100%">
-            <m:MaterialNavBar activates="sidenav" width="100%">
-                <m:MaterialNavBrand ui:field="title" paddingLeft="60" text="App"/>
+            <m:MaterialNavBar activates="sidenav" width="100%" >
+                <m:MaterialNavBrand ui:field="title" paddingLeft="20" text="App" />
                 <m:MaterialNavSection float="RIGHT">
                     <m:MaterialLink text="Link 1"/>
                     <m:MaterialLink iconType="POLYMER" />

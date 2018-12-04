@@ -11,13 +11,14 @@ import org.fusesource.restygwt.client.RestService;
 
 import shu.cases2.shared.domain.NameValue;
 
-@Path("/rest/values")
-public interface ValueClient extends RestService{
+//@Path("/rest/values")
+public interface ValueClient{ 
+//extends RestService{
 
-	@GET
-    public void getValues( MethodCallback<List<NameValue>> callback);
-	  
-	@GET
-	@Path("/{name}")
-	public void getValues(@PathParam("name") String name, MethodCallback<NameValue> callback);
+//	@GET
+//    public void getValues( MethodCallback<List<NameValue>> callback);
+//	  
+//	@GET
+//	@Path("/{name}")
+//	public void getValues(@PathParam("name") String name, MethodCallback<NameValue> callback);
 }

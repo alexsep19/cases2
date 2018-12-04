@@ -10,10 +10,11 @@ import org.fusesource.restygwt.client.RestService;
 import gwt.material.design.client.data.loader.LoadResult;
 import shu.cases2.shared.Person;
 
-@Path("/rest/person")
-public interface PersonClient extends RestService{
+//@Path("/rest/person")
+public interface PersonClient{ 
+//extends RestService{
 	
-	@GET
-	@Path("{offset}/{limit}")
-	public void getPersons(@PathParam("offset") int offset, @PathParam("limit") int limit, MethodCallback<LoadResult<Person>> callback);
+//	@GET
+//	@Path("{offset}/{limit}")
+//	public void getPersons(@PathParam("offset") int offset, @PathParam("limit") int limit, MethodCallback<LoadResult<Person>> callback);
 }

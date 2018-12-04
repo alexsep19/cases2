@@ -54,7 +54,7 @@ import gwt.material.design.client.ui.MaterialToast;
 import shu.cases2.client.rest.TextBoxClient;
 import shu.cases2.client.rest.ValueClient;
 import shu.cases2.shared.domain.NameValue;
-import shu.cases2.shared.domain.TextBox;
+//import shu.cases2.shared.domain.TextBox1;
 
 public class ComponentView extends ViewImpl implements ComponentPresenter.MyView {
 
@@ -77,50 +77,50 @@ public class ComponentView extends ViewImpl implements ComponentPresenter.MyView
     
     @UiHandler("btnLoad")
     void handlerBtnLoad(ClickEvent e) {
-        TextBoxClient client = GWT.create(TextBoxClient.class);
-    	client.getTextBox(new MethodCallback<TextBox>(){
-
-			@Override
-			public void onFailure(Method method, Throwable exception) {
-//				MaterialModal m = new MaterialModal(){
-//					
-//				};
-				MaterialToast.fireToast(exception.getMessage());
-//				mmErr.open();
-			}
-			@Override
-			public void onSuccess(Method method, TextBox response) {
-				final MaterialDialog md = new MaterialDialog();
-				md.setType(DialogType.FIXED_FOOTER);
-				md.setDismissible(true);
-				md.setInDuration(100);
-				md.setOutDuration(100);
-				MaterialDialogContent mc = new MaterialDialogContent();
-				MaterialTitle mt = new MaterialTitle("title Успешно", "Пропустить");
-				mc.add(mt);
-				MaterialDialogFooter mdf = new MaterialDialogFooter();
-				MaterialButton mb = new MaterialButton("Закрыть"); 
-				mb.setType(ButtonType.FLAT);
-				mb.addClickHandler(new ClickHandler(){
-					@Override
-					public void onClick(ClickEvent event){
-					  md.close(true);
-					}
-				});
-				mdf.add(mb);
-				md.add(mc);
-				md.add(mdf);
-//				md.setTitle("rrrrrrrrrrrrrr");
-				RootPanel.get().add(md);
-				md.open();
-//				dialogBottomSheet.open();
-								
-				txName.setValue(response.getName());
-				cbCheckBox.setValue(response.isCheckbox());
-				enableCheckBox(cbCheckBox.getValue());
-				dpDate.setValue(response.getBirthday());
-			}
-    	} );
+//        TextBoxClient client = GWT.create(TextBoxClient.class);
+//    	client.getTextBox(new MethodCallback<TextBox1>(){
+//
+//			@Override
+//			public void onFailure(Method method, Throwable exception) {
+////				MaterialModal m = new MaterialModal(){
+////					
+////				};
+//				MaterialToast.fireToast(exception.getMessage());
+////				mmErr.open();
+//			}
+//			@Override
+//			public void onSuccess(Method method, TextBox1 response) {
+//				final MaterialDialog md = new MaterialDialog();
+//				md.setType(DialogType.FIXED_FOOTER);
+//				md.setDismissible(true);
+//				md.setInDuration(100);
+//				md.setOutDuration(100);
+//				MaterialDialogContent mc = new MaterialDialogContent();
+//				MaterialTitle mt = new MaterialTitle("title Успешно", "Пропустить");
+//				mc.add(mt);
+//				MaterialDialogFooter mdf = new MaterialDialogFooter();
+//				MaterialButton mb = new MaterialButton("Закрыть"); 
+//				mb.setType(ButtonType.FLAT);
+//				mb.addClickHandler(new ClickHandler(){
+//					@Override
+//					public void onClick(ClickEvent event){
+//					  md.close(true);
+//					}
+//				});
+//				mdf.add(mb);
+//				md.add(mc);
+//				md.add(mdf);
+////				md.setTitle("rrrrrrrrrrrrrr");
+//				RootPanel.get().add(md);
+//				md.open();
+////				dialogBottomSheet.open();
+//								
+//				txName.setValue(response.getName());
+//				cbCheckBox.setValue(response.isCheckbox());
+//				enableCheckBox(cbCheckBox.getValue());
+//				dpDate.setValue(response.getBirthday());
+//			}
+//    	} );
     }
     
 //    @UiHandler("btnCloseBottomSheetDialog")

@@ -70,6 +70,11 @@ public class ApplicationPresenter
 //    }
 
     @Override
+    protected void onReveal() {
+        super.onReveal();
+    }
+
+    @Override
     public void onSetPageTitle(SetPageTitleEvent event) {
         getView().setPageTitle(event.getTitle());
     }

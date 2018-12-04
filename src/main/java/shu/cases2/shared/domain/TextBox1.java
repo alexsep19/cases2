@@ -6,16 +6,17 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class TextBox implements Serializable{
+public class TextBox1 implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Boolean checkbox;
 	private String name;
     private Date birthday;
  
-    public TextBox(){}
+    public TextBox1(){}
     
-    @JsonCreator
-	public TextBox(@JsonProperty("checkbox") boolean checkbox, @JsonProperty("name") String name , @JsonProperty("birthday") Date birthday){
+//    @JsonCreator
+//	public TextBox(@JsonProperty("checkbox") boolean checkbox, @JsonProperty("name") String name , @JsonProperty("birthday") Date birthday){
+	public TextBox1( boolean checkbox, String name , Date birthday){
     	this.checkbox = checkbox;
     	this.name = name;
     	this.birthday = birthday;

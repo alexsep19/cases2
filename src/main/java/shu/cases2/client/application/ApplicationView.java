@@ -86,9 +86,9 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
 //        clientConfig.register(MultiPartFeature.class);
 //        Client client = ClientFactory.newClient(clientConfig);
         
-        Defaults.setServiceRoot(GWT.getHostPageBaseURL());
+//        Defaults.setServiceRoot(GWT.getHostPageBaseURL());
 //        Defaults.setServiceRoot(GWT.getModuleBaseURL()); 
-        Defaults.setDateFormat(null);
+//        Defaults.setDateFormat(null);
     }
 
 }

@@ -146,19 +146,30 @@
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-codeserver</artifactId>
+            <version>${gwt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
             <artifactId>gwt-dev</artifactId>
             <version>${gwt.version}</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- JDT 
+        <!-- JDT -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
--->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+
         <!-- GWTP -->
         <dependency>
             <groupId>com.gwtplatform</groupId>
@@ -166,6 +177,22 @@
             <version>${gwtp.version}</version>
 <!--             <scope>provided</scope>
  -->
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-dispatch-rpc-client</artifactId>
+            <version>${gwtp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-dispatch-rpc-server-guice</artifactId>
+            <version>${gwtp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-dispatch-rpc-shared</artifactId>
+            <version>${gwtp.version}</version>
         </dependency>
 
         <!-- GwtMaterial -->
@@ -207,7 +234,7 @@
             <scope>test</scope>
         </dependency>
         
-        <!-- jersey -->
+        <!-- jersey --> 
          <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
@@ -231,14 +258,14 @@
     		<artifactId>jersey-media-json-jackson</artifactId>
     		<version>${jersey.version}</version>
         </dependency>
-      
-        <!-- Rest -->
+     
+        <!-- Rest  -->
         <dependency>
         	<groupId>javax.ws.rs</groupId>
     		<artifactId>javax.ws.rs-api</artifactId>
     		<version>2.1</version>
         </dependency>
-        
+       
         <!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-jaxrs 
         <dependency>
             <groupId>org.wildfly</groupId>
@@ -258,12 +285,12 @@
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>2.9.0</version>
         </dependency>
-        <!-- Resty -->
+        <!-- Resty -->	
         <dependency>
 			<groupId>org.fusesource.restygwt</groupId>
     		<artifactId>restygwt</artifactId>
     		<version>2.2.3</version>
 		</dependency>
-		
+	
     </dependencies>
 </project>
