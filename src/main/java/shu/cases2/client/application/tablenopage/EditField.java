@@ -10,8 +10,12 @@ public class EditField<T> {
 
 	public void setField(T model){};
 	
-	public Object getField(){return getMaterialTextBox().getValue();};
+	public void getField(T model){};
 
+	public Object getFieldValue(){return getMaterialTextBox().getValue();};
+	public void setFieldValue(String value){getMaterialTextBox().setValue(value);};
+	public void setFocusField(){getMaterialTextBox().setFocus(true);};
+	
 	public MaterialTextBox getMaterialTextBox() {
 		return materialTextBox;
 	}

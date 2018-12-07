@@ -8,6 +8,8 @@ import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
@@ -31,6 +33,7 @@ import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialRow;
 import gwt.material.design.client.ui.MaterialTextBox;
+import gwt.material.design.client.ui.MaterialToast;
 import gwt.material.design.client.ui.pager.MaterialDataPager;
 import gwt.material.design.client.ui.table.MaterialDataTable;
 import gwt.material.design.client.ui.table.cell.Column;
@@ -38,6 +41,7 @@ import gwt.material.design.client.ui.table.cell.TextColumn;
 import shu.cases2.client.application.table.tools.PageDataSource;
 import shu.cases2.client.application.tablenopage.tools.CustomRenderer;
 import shu.cases2.client.application.tablenopage.tools.PersonRowFactory;
+import shu.cases2.client.application.tablenopage.wintools.ApproveDialog;
 import shu.cases2.client.rest.PersonClient;
 import shu.cases2.client.rpc.RpcService;
 import shu.cases2.client.rpc.RpcServiceAsync;
@@ -55,7 +59,15 @@ public class TableViewNP  extends ViewImpl implements TablePresenterNP.MyView {
 		@UiField
 	    MaterialDataTable<Person> table;
     
-		EditWindow editWindow = new EditWindow("560px", "180px");
+		EditWindow<Person> editWindow = new EditWindow<Person>("560px", "180px"){
+		   @Override
+		   public void saveModel(Person person, AsyncCallback<List<Person>> asyncCallback){
+			   svc.savePerson( person, asyncCallback);
+		   } 
+		   public void fillTable(List<Person> loadPage){
+			   table.setRowData(0, loadPage);
+		   }
+		};
 		
 	    @Inject
 	    TableViewNP(Binder uiBinder) {
@@ -80,9 +92,15 @@ public class TableViewNP  extends ViewImpl implements TablePresenterNP.MyView {
 	        editWindow.addField( tcFirstName, new EditField<Person>(){
 	        	@Override
 	        	public void setField(Person model){
-	        		getMaterialTextBox().setFocus(true);
-	        		getMaterialTextBox().setValue(model.getFirstName());
+//	        		getMaterialTextBox().setFocus(true);
+//	        		getMaterialTextBox().setValue(model.getFirstName());
+	        		setFocusField();
+	        		setFieldValue(model.getFirstName());
 	        	};
+	        	@Override
+	        	public void getField(Person model){
+	        		model.setFirstName((String)getFieldValue());
+	        	}
 	        }, 20);
 	        
 	        TextColumn tcLastName = new TextColumn<Person>() {
@@ -99,8 +117,13 @@ public class TableViewNP  extends ViewImpl implements TablePresenterNP.MyView {
 	        editWindow.addField( tcLastName, new EditField<Person>(){
 	        	@Override
 	        	public void setField(Person model){
-	        		getMaterialTextBox().setValue(model.getLastName());
+	        		setFieldValue(model.getLastName());
+//	        		getMaterialTextBox().setValue(model.getLastName());
 	        	};
+	        	@Override
+	        	public void getField(Person model){
+	        		model.setLastName((String)getFieldValue());
+	        	}
 	        }, 20);
 
 	        TextColumn tcPhone = new TextColumn<Person>() {
@@ -125,8 +148,12 @@ public class TableViewNP  extends ViewImpl implements TablePresenterNP.MyView {
 	        editWindow.addField( tcPhone, new EditField<Person>(){
 	        	@Override
 	        	public void setField(Person model){
-	        		getMaterialTextBox().setValue(model.getPhone());
-	        	};
+	        		setFieldValue(model.getPhone());
+	        	}
+	        	@Override
+	        	public void getField(Person model){
+	        		model.setPhone((String)getFieldValue());
+	        	}
 	        }, 20);
 	        
 //	        table.setVisibleRange(0, 10);
@@ -157,22 +184,68 @@ public class TableViewNP  extends ViewImpl implements TablePresenterNP.MyView {
 	        MaterialIcon addIcon = new MaterialIcon(IconType.ADD);
 	        addIcon.setWaves(WavesType.LIGHT);
 	        addIcon.setCircle(true);
+	        addIcon.addClickHandler(event ->{
+	        	editWindow.setTitle("Создать");
+	        	editWindow.setValues(new Person(0,"","","",""));
+	        	editWindow.open();
+	        });
+	        
 	        MaterialIcon delIcon = new MaterialIcon(IconType.DELETE);
 	        delIcon.setWaves(WavesType.LIGHT);
 	        delIcon.setCircle(true);
+	        delIcon.addClickHandler(event ->{
+	        	if (table.getSelectedRowModels(true).size() != 1) {
+	        		MaterialToast.fireToast("Необходимо выбрать 1 запись");
+//	        		Window.alert("Необходимо выбрать 1 запись");
+	        		return;
+	        	}
+	        	ApproveDialog approveDialog = new ApproveDialog("Удалить запись?"){
+	        		@Override
+	        		public void processApprove(){
+		        		svc.delPerson( table.getSelectedRowModels(true).get(0), new AsyncCallback<List<Person>>(){
+		        			@Override
+		        			public void onFailure(Throwable exception) {
+		        				Window.alert("Load failure" + exception);
+		        			}
+		        			@Override
+		        			public void onSuccess(List<Person> loadPage) {
+					    	table.setRowData(0, loadPage);
+//					    	table.getView().setRedraw(true); 
+//					    	 table.getView().refresh();
+		        			}
+		        		});
+	        		};
+	        	}; 
+//	        	if (approveDialog.isApproved()){
+//	        		svc.delPerson( table.getSelectedRowModels(true).get(0), new AsyncCallback<List<Person>>(){
+//	        			@Override
+//	        			public void onFailure(Throwable exception) {
+//	        				Window.alert("Load failure" + exception);
+//	        			}
+//	        			@Override
+//	        			public void onSuccess(List<Person> loadPage) {
+//				    	table.setRowData(0, loadPage);
+////				    	table.getView().setRedraw(true); 
+////				    	 table.getView().refresh();
+//	        			}
+//	        		});
+//	        	}
+//	        	Window.alert("table.getSelectedRowModels(true) = " + 
+//	        		table.getSelectedRowModels(true).get(0));
+	        });
 	        panel.add(addIcon);
 	        panel.add(delIcon);
 	    }
 	    
 	    private void refreshTable(){
-			svc.getAllPersons(new AsyncCallback<LoadPage<Person>>(){
+			svc.getPersons(new AsyncCallback<List<Person>>(){
 			@Override
 			public void onFailure(Throwable exception) {
 				Window.alert("Load failure" + exception);
 			}
 			@Override
-			public void onSuccess(LoadPage<Person> loadPage) {
-		    	table.setRowData(0, loadPage.getData());
+			public void onSuccess(List<Person> loadPage) {
+		    	table.setRowData(0, loadPage);
 //		    	table.getView().setRedraw(true); 
 //		    	 table.getView().refresh();
 			}

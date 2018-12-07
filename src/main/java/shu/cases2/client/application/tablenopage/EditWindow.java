@@ -2,6 +2,8 @@ package shu.cases2.client.application.tablenopage;
 
 import java.util.ArrayList;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+
 import java.util.List;
 
 import org.apache.tools.ant.taskdefs.Typedef;
@@ -28,6 +30,7 @@ import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.table.cell.Column;
 import gwt.material.design.client.ui.table.cell.TextColumn;
 import shu.cases2.client.application.tablenopage.wintools.ButtonRow;
+import shu.cases2.shared.Person;
 
 public class EditWindow<T> extends MaterialWindow{
     MaterialPanel materialPanel = new MaterialPanel();
@@ -35,6 +38,7 @@ public class EditWindow<T> extends MaterialWindow{
     MaterialRow materialRowButton = new MaterialRow();
     List<EditField<T>> editFields = new ArrayList<EditField<T>>();
     String allFieldWidth;
+    T model;
 	
 	public EditWindow(String maxWidth, String fieldWidth) {
 		this.allFieldWidth = fieldWidth;
@@ -44,8 +48,23 @@ public class EditWindow<T> extends MaterialWindow{
 		materialPanel.add(new ButtonRow(new ClickHandler(){
 			@Override
 			public void onClick(ClickEvent event) {
-				
-			}},
+				saveModel(getValues(), new AsyncCallback<List<T>>(){
+						@Override
+						public void onFailure(Throwable exception) {
+							Window.alert("Load failure" + exception);
+							close();
+						}
+						@Override
+						public void onSuccess(List<T> loadPage) {
+							fillTable(loadPage);
+//					    	table.setRowData(0, loadPage);
+//					    	table.getView().setRedraw(true); 
+//					    	 table.getView().refresh();
+					    	close();
+						}
+					}
+                 );
+			} },
 			new ClickHandler(){
 				@Override
 				public void onClick(ClickEvent event) {
@@ -79,11 +98,21 @@ public class EditWindow<T> extends MaterialWindow{
 	}
 	
 	public void setValues(T model){
+		this.model = model;
 		for(EditField<T> editField : editFields){
 			editField.setField(model);
-			
 		}
 	}
+	
+	public T getValues(){
+		for(EditField<T> editField : editFields){
+			editField.getField(model);
+		}
+		return model;
+	}
+	
+	public void saveModel(T model, AsyncCallback<List<T>> asyncCallback){}
+	public void fillTable(List<T> loadPage){}
 	
 //	@Override
 //	public void close(){
